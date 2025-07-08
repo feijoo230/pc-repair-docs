@@ -66,33 +66,37 @@
 
                         <div class="col-12">
                             <label for="descripcion" class="form-label">Descripción del bien:</label>
-                            <textarea class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="Ej: Notebook HP Pavilion, CPU clon, Monitor LG 22'" required></textarea>
+                            <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
                         </div>
 
                         <div class="col-12">
                             <label for="caracteristicas" class="form-label">Características técnicas:</label>
-                            <textarea class="form-control" id="caracteristicas" name="caracteristicas" rows="4" placeholder="Procesador, RAM, Disco, etc." required></textarea>
+                            <textarea class="form-control" id="caracteristicas" name="caracteristicas" rows="4"required></textarea>
                         </div>
 
-                        <!-- He visto que tienes un campo 'responsable' en el form original. Si quieres guardarlo, debes agregarlo a tu ruta de Flask y a la base de datos. Lo incluyo aquí por si lo necesitas -->
                         <div class="col-12">
-                            <label for="responsable" class="form-label">Responsable del equipo:</label>
-                            <input type="text" class="form-control" id="responsable" name="responsable" placeholder="Nombre y Apellido" required>
+                            <label for="responsable" class="form-label">Responsable</label>
+                            <input type="text" class="form-control" id="responsable" name="responsable" required>
                         </div>
                         
                         <div class="col-12">
                             <label for="observaciones" class="form-label">Observaciones (Fallas detectadas):</label>
-                            <textarea class="form-control" id="observaciones" name="observaciones" rows="4" placeholder="El equipo no enciende, la pantalla muestra artefactos, el sistema operativo no inicia, etc." required></textarea>
+                            <textarea class="form-control" id="observaciones" name="observaciones" rows="4"  required></textarea>
                         </div>
 
                         <div class="col-12">
                             <label for="conclusion" class="form-label">Conclusión (Recomendación técnica):</label>
-                            <textarea class="form-control" id="conclusion" name="conclusion" rows="4" placeholder="Se recomienda el reemplazo de la fuente de alimentación, se sugiere reinstalar el sistema operativo, etc." required></textarea>
+                            <textarea class="form-control" id="conclusion" name="conclusion" rows="4" required></textarea>
                         </div>
 
                         <div class="col-12">
                             <label for="fotos" class="form-label">Adjuntar fotos del equipo <span class="text-muted">(opcional)</span>:</label>
                             <input class="form-control" type="file" id="fotos" name="fotos" multiple accept="image/*">
+                        </div>
+
+                        <div class="col-12">
+                            <label for="tecnico_responsable" class="form-label">Técnico a cargo:</label>
+                            <input type="text" class="form-control" id="tecnico_responsable" name="tecnico_responsable" placeholder="Nombre del técnico que realiza el informe" required>
                         </div>
                     </div>
 

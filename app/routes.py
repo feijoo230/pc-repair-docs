@@ -1,5 +1,5 @@
 import os
-from flask import Blueprint, request, render_template, redirect, url_for, send_from_directory, current_app
+from flask import Blueprint, request, render_template, redirect, url_for, send_from_directory, current_app, flash
 from werkzeug.utils import secure_filename
 from .models import get_collection
 from .utils.pdf_generator import generar_pdf
@@ -26,6 +26,8 @@ def formulario():
             "descripcion": request.form.get("descripcion"),
             "caracteristicas": request.form.get("caracteristicas"),
             "inventario": request.form.get("inventario"),
+            "responsable": request.form.get("responsable"),
+            "tecnico_responsable": request.form.get("tecnico_responsable"),
             "observaciones": request.form.get("observaciones"),
             "conclusion": request.form.get("conclusion"),
             "fecha_creacion_corta": hoy.strftime("%d/%m/%Y"),
@@ -64,12 +66,8 @@ def descargar_pdf(filename):
 @main.route("/historial")
 def historial():
     informes_collection = get_collection()
-    
-    
-    todos_los_informes = informes_collection.find().sort("fecha", -1) 
-    
-
-    return render_template("historial.html", informes=todos_los_informes)
+    lista_de_informes = list(informes_collection.find().sort("fecha", -1))  
+    return render_template("historial.html", informes=lista_de_informes)
 
 
 @main.route("/editar/<informe_id>", methods=["GET", "POST"])
@@ -87,6 +85,8 @@ def editar_informe(informe_id):
             "descripcion": request.form.get("descripcion"),
             "caracteristicas": request.form.get("caracteristicas"),
             "inventario": request.form.get("inventario"),
+            "responsable": request.form.get("responsable"),
+            "tecnico_responsable": request.form.get("tecnico_responsable"),
             "observaciones": request.form.get("observaciones"),
             "conclusion": request.form.get("conclusion"),
         }
@@ -110,7 +110,7 @@ def editar_informe(informe_id):
         pdf_output_path = os.path.join(pdf_path_abs, pdf_filename)
         generar_pdf(datos_completos, pdf_output_path)
         
-        flash("Informe actualizado con éxito.", "success")
+        #flash("Informe actualizado con éxito.", "success") hasta averiaguar los fallos 
         return redirect(url_for("main.historial"))
     
     return render_template("editar_informe.html", informe=informe_a_editar)

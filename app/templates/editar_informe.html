@@ -44,13 +44,11 @@
             </div>
             <div class="card-body p-4">
 
-                <!-- Importante: el 'action' va vacío para enviar a la misma URL -->
                 <form method="POST" class="needs-validation" novalidate>
                     <div class="row g-4">
 
                         <div class="col-md-6">
                             <label for="fecha" class="form-label">Fecha de ingreso:</label>
-                            <!-- El formato de fecha para el input type="date" debe ser YYYY-MM-DD -->
                             <input type="date" class="form-control" id="fecha" name="fecha" value="{{ informe.fecha }}" required>
                         </div>
 
@@ -69,8 +67,11 @@
                             <textarea class="form-control" id="caracteristicas" name="caracteristicas" rows="4" required>{{ informe.caracteristicas }}</textarea>
                         </div>
 
-                        <!-- He notado que en tu formulario original tienes 'responsable' pero no lo guardas en la DB. Lo he quitado por ahora, pero lo puedes volver a añadir si es necesario -->
-                        
+                        <div class="col-12">
+                            <label for="responsable" class="form-label">Responsable:</label>
+                            <input type="text" class="form-control" id="responsable" name="responsable" value="{{ informe.responsable }}" required>
+                        </div>
+
                         <div class="col-12">
                             <label for="observaciones" class="form-label">Observaciones (Fallas detectadas):</label>
                             <textarea class="form-control" id="observaciones" name="observaciones" rows="4" required>{{ informe.observaciones }}</textarea>
@@ -81,7 +82,11 @@
                             <textarea class="form-control" id="conclusion" name="conclusion" rows="4" required>{{ informe.conclusion }}</textarea>
                         </div>
 
-                        <!-- Sección para mostrar fotos existentes (no editables) -->
+                        <div class="col-12">
+                            <label for="tecnico_responsable" class="form-label">Técnico a cargo:</label>
+                            <input type="text" class="form-control" id="tecnico_responsable" name="tecnico_responsable" value="{{ informe.tecnico_responsable or '' }}" required>
+                        </div>
+
                         {% if informe.fotos %}
                         <div class="col-12">
                             <p class="form-label">Fotos adjuntas:</p>
