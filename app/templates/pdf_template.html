@@ -188,7 +188,7 @@
     <div class="photo-section">
         <h2>Imágenes Adjuntas</h2>
         {% for foto_filename in fotos %}
-            <img src="/app/static/uploads/{{ foto_filename }}" alt="Foto adjunta">
+            <img src="{{ base_path }}/static/uploads/{{ foto_filename }}" alt="Foto adjunta">
         {% endfor %}
     </div>
     {% endif %}

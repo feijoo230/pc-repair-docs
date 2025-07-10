@@ -44,8 +44,8 @@ def formulario():
                 saved_filenames.append(filename)
 
         data["fotos"] = saved_filenames
-
-        
+        data['base_path'] = f"file://{current_app.root_path}"
+                
         inserted = get_collection().insert_one(data.copy())
         data["_id"] = str(inserted.inserted_id)
 
